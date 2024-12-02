@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mysql
+  labels:
+    tier: third-party
+spec:
+  # modify replicas according to your case
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: third-party
+  template:
+    metadata:
+      labels:
+        tier: third-party
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:9.1
+        # image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
